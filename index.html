@@ -4,7 +4,6 @@
   <title>Can My Pet Eat This?</title>
 </head>
 <body>
-
   <h1>"What foods can my pet eat?"</h1>
   <h3>This is a question that goes without answers far too often. Here's the answer.</h3>
   <br><br>
@@ -22,12 +21,11 @@
   <button onclick="checkFood()">Check</button>
   <p id="result"></p>
   <br><br>
-
   <script>
     function checkFood() {
       const pet = document.getElementById('pet').value;
       const food = document.getElementById('food').value.toLowerCase();
-
+      
       const foodsNotAllowed = {
         dog: ['chocolate', 'grapes', 'onion'],
         cat: ['chocolate', 'lilies', 'onion'],
@@ -43,8 +41,6 @@
       }
     }
   </script>
-
   <!-- POV: You wanna see what's in my code -->
-
 </body>
 </html>
