@@ -2,25 +2,120 @@
 <html>
 <head>
   <title>Can My Pet Eat This?</title>
-  <script src="scripts.js" defer></script>
+  <style>
+    /* Body styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #292929, #000000);
+      color: #ffffff;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Container for content */
+    .container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Headings */
+    h1 {
+      color: #00b3b3;
+    }
+
+    h3 {
+      color: #66cccc;
+    }
+
+    /* Label and input styling */
+    label {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    select,
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #666666;
+      background-color: #333333;
+      color: #ffffff;
+      margin: 8px 0;
+    }
+
+    /* Button styling */
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      background-color: #006666;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #008080;
+    }
+
+    /* Result paragraph */
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function checkFood() {
+      const pet = document.getElementById('pet').value;
+      const food = document.getElementById('food').value.toLowerCase();
+
+      const foodsNotAllowed = {
+        dog: ['chocolate', 'grapes', 'onion'],
+        cat: ['chocolate', 'lilies', 'onion'],
+        rabbit: ['almonds', 'avocado', 'rhubarb'],
+        hamster: ['almonds', 'citrus fruits', 'garlic'],
+        fish: ['bread', 'human food', 'processed foods']
+      };
+
+      if (foodsNotAllowed[pet] && foodsNotAllowed[pet].includes(food)) {
+        document.getElementById('result').innerText = `No, ${pet}s should not eat ${food}.`;
+      } else {
+        document.getElementById('result').innerText = `Yes, ${pet}s can eat ${food}.`;
+      }
+    }
+
+    window.onload = function() {
+      document.getElementById('checkButton').addEventListener('click', checkFood);
+    }
+  </script>
 </head>
 <body>
-  <h1>"What foods can my pet eat?"</h1>
-  <h3>This is a question that goes without answers far too often. Here's the answer.</h3>
-  <br><br>
-  <label for="pet">Can my:</label>
-  <select id="pet">
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="rabbit">Rabbit</option>
-    <option value="hamster">Hamster</option>
-    <option value="fish">Fish</option>
-  </select>
-  <br><br>
-  <label for="food">Eat:</label>
-  <input type="text" id="food" name="inputfood">
-  <button id="checkButton">Check</button>
-  <p id="result"></p>
-  <br><br>
+  <div class="container">
+    <h1>"What foods can my pet eat?"</h1>
+    <h3>This is a question that goes without answers far too often. Here's the answer.</h3>
+    <br><br>
+    <label for="pet">Can my:</label>
+    <select id="pet">
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="rabbit">Rabbit</option>
+      <option value="hamster">Hamster</option>
+      <option value="fish">Fish</option>
+    </select>
+    <br><br>
+    <label for="food">Eat:</label>
+    <input type="text" id="food" name="inputfood">
+    <button id="checkButton">Check</button>
+    <p id="result"></p>
+    <br><br>
+  </div>
 </body>
 </html>
